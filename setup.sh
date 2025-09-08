@@ -10,7 +10,7 @@ mkdir -p ${path_to_repos}
 ./git_update.sh
 
 # DOTFILES
-git clone git@github.com:BigDru/dotfiles.git ${path_to_repos}/dotfiles
+git clone https://github.com/bigdru/dotfiles ${path_to_repos}/dotfiles
 
 touch ~/.bashrc_dru
 echo "export path_to_repos=\"${path_to_repos}\"" >> ~/.bashrc_dru
