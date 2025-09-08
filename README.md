@@ -19,7 +19,7 @@ This repository contains various setup and maintenance scripts for Linux environ
 ### Running the Arch Linux Setup Script
 
 ```bash
-curl -O https://raw.githubusercontent.com/BigDru/scripts/main/setup_arch.sh
+curl -O https://raw.githubusercontent.com/BigDru/scripts/refs/heads/develop/setup_arch.sh
 chmod +x setup_arch.sh
 sudo ./setup_arch.sh
 ```
