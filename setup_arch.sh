@@ -67,7 +67,14 @@ EOF
 repos=/home/$username/repos
 mkdir $repos
 git clone https://github.com/bigdru/dotfiles $repos/dotfiles
+pushd $repos/dotfiles
+git remote set-url origin git@github.com:bigdru/dotfiles
+popd
+
 git clone https://github.com/bigdru/scripts $repos/scripts
+pushd $repos/dotfiles
+git remote set-url origin git@github.com:bigdru/scripts
+popd
 
 mkdir /home/$username/.ssh
 chmod 700 /home/$username/.ssh
@@ -84,12 +91,12 @@ echo
 
 echo "Setup complete"
 echo "=============="
-echo "It is recommended to copy your id_rsa to the .ssh directory and chmod it to 600"
-echo "Then, from windows run:"
+echo "From windows run:"
 echo "wsl --shutdown"
 echo "wsl -s archlinux"
 echo "wsl"
 echo
+echo "It is recommended to copy your id_rsa to the .ssh directory and chmod it to 600"
 echo "Then the following in linux:"
 echo "cd ~/repos/scripts"
 echo "./setup.sh"
