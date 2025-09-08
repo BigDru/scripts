@@ -18,11 +18,11 @@ This repository contains various setup and maintenance scripts for Linux environ
 
 ### Running the Arch Linux Setup Script
 
-\`\`\`bash
+```bash
 curl -O https://raw.githubusercontent.com/BigDru/scripts/main/setup_arch.sh
 chmod +x setup_arch.sh
 sudo ./setup_arch.sh
-\`\`\`
+```
 
 This script will:
 - Update the system and install essential packages (sudo, vi)
@@ -31,19 +31,19 @@ This script will:
 - Configure WSL to start with the new user by default
 
 After running the script, shutdown WSL from Windows:
-\`\`\`powershell
+```powershell
 wsl --shutdown
-\`\`\`
+```
 
 Then set Arch Linux as the default distribution (if not already):
-\`\`\`powershell
+```powershell
 wsl --set-default Arch
-\`\`\`
+```
 
 And restart WSL:
-\`\`\`powershell
+```powershell
 wsl
-\`\`\`
+```
 
 You will now be logged in as the new user.
 
