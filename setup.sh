@@ -1,6 +1,7 @@
 #!/bin/bash
 path_to_repos="/home/dru/repos"
 path_to_work="/home/dru/work"
+path_to_dropbox="/mnt/c/Users/aldum/Dropbox"
 
 export path_to_repos
 
@@ -12,19 +13,24 @@ mkdir -p ${path_to_repos}
 git clone git@github.com:BigDru/dotfiles.git ${path_to_repos}/dotfiles
 
 touch ~/.bashrc_dru
-echo export path_to_repos="${path_to_repos}" >> ~/.bashrc_dru
+echo "export path_to_repos=\"${path_to_repos}\"" >> ~/.bashrc_dru
 
-source .bashrc
+ln -sf ${path_to_repos}/dotfiles/.bashrc ~/.bashrc
+ln -sf ${path_to_repos}/dotfiles/.dircolors ~/.dircolors
+ln -sf ${path_to_repos}/dotfiles/.gitconfig ~/.gitconfig
+ln -sf ${path_to_repos}/dotfiles/.tmux.conf ~/.tmux.conf
 
-ln -s ~/.bashrc ${path_to_repos}/dotfiles/.bashrc
-ln -s ~/.dircolors ${path_to_repos}/dotfiles/.dircolors
-ln -s ~/.gitconfig ${path_to_repos}/dotfiles/.gitconfig
-ln -s ~/.tmux.conf ${path_to_repos}/dotfiles/.tmux.conf
-
+source ~/.bashrc
 
 #neovim
 ./nvim_install.sh
 
-ln -s ~/.config/nvim ${path_to_repos}/dotfiles/.config/nvim
+mkdir -p ~/.config
+ln -sf ${path_to_repos}/dotfiles/.config/nvim ~/.config/nvim
+
+# misc
+mkdir ~/bin
 
 mkdir -p ${path_to_work}
+ln -s {path_to_dropbox} ${path_to_work}/dropbox
+ln -s {path_to_dropbox}/Dev ${path_to_work}/dev

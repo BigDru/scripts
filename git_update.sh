@@ -2,6 +2,17 @@
 
 git_repo_location=${path_to_repos}git
 
+# Check for Arch Linux first
+if command -v pacman &> /dev/null; then
+    echo "Detected Arch Linux"
+    echo "Upgrading and installing git via pacman"
+    sudo pacman -Syu --noconfirm
+    sudo pacman -S --noconfirm git
+    echo "Git installed/updated via pacman"
+    git --version
+    exit 0
+fi
+
 has_dnf_query=`command -v dnf`
 if [[ -z $has_dnf_query ]]; then
     has_dnf=0
@@ -154,7 +165,7 @@ git checkout tags/v${major}.${minor}.${patch}
 echo
 
 make prefix=/usr all doc info
-make prefix=/usr install install-doc install-html install-info
+sudo make prefix=/usr install install-doc install-html install-info
 
 echo
 
