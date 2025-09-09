@@ -20,7 +20,7 @@ This repository contains various setup and maintenance scripts for Linux environ
 
 ```bash
 cd
-curl -O https://raw.githubusercontent.com/BigDru/scripts/refs/heads/develop/setup_arch.sh
+curl -O https://raw.githubusercontent.com/bigdru/scripts/refs/heads/develop/setup_arch.sh
 chmod +x setup_arch.sh
 ./setup_arch.sh
 rm ./setup_arch.sh

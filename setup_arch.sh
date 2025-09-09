@@ -58,12 +58,19 @@ while true; do
 done
 
 useradd -m -G wheel -s /bin/bash "$username"
+echo
+echo
 
-cat > /etc/wsl.conf << EOF
-[user]
-default=$username
-EOF
+echo "wsl.conf"
+echo "--------"
+curl -s https://raw.githubusercontent.com/bigdru/scripts/develop/wsl.conf -o /tmp/wsl.conf
+sed -i "s/\$username/$username/g" /tmp/wsl.conf
+mv /tmp/wsl.conf /etc/wsl.conf
+echo
+echo
 
+echo "Repo download"
+echo "-------------"
 repos=/home/$username/repos
 mkdir $repos
 git clone https://github.com/bigdru/dotfiles $repos/dotfiles
@@ -75,11 +82,14 @@ git clone https://github.com/bigdru/scripts $repos/scripts
 pushd $repos/dotfiles
 git remote set-url origin git@github.com:bigdru/scripts
 popd
+echo
+echo
 
+echo "Permissions & ssh"
+echo "-----------------"
 mkdir /home/$username/.ssh
 chmod 700 /home/$username/.ssh
 chown --recursive $username:$username /home/$username/
-
 echo
 echo
 
