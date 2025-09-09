@@ -23,7 +23,6 @@ cd
 curl -O https://raw.githubusercontent.com/bigdru/scripts/refs/heads/develop/setup_arch.sh
 chmod +x setup_arch.sh
 ./setup_arch.sh
-rm ./setup_arch.sh
 ```
 
 This script will:

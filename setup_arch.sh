@@ -66,6 +66,7 @@ echo "--------"
 curl -s https://raw.githubusercontent.com/bigdru/scripts/develop/wsl.conf -o /tmp/wsl.conf
 sed -i "s/\$username/$username/g" /tmp/wsl.conf
 mv /tmp/wsl.conf /etc/wsl.conf
+cat /etc/wsl.conf
 echo
 echo
 
@@ -79,7 +80,7 @@ git remote set-url origin git@github.com:bigdru/dotfiles
 popd
 
 git clone https://github.com/bigdru/scripts $repos/scripts
-pushd $repos/dotfiles
+pushd $repos/scripts
 git remote set-url origin git@github.com:bigdru/scripts
 popd
 echo
@@ -90,6 +91,7 @@ echo "-----------------"
 mkdir /home/$username/.ssh
 chmod 700 /home/$username/.ssh
 chown --recursive $username:$username /home/$username/
+ls -al /home/$username | grep .ssh
 echo
 echo
 
@@ -102,11 +104,14 @@ echo
 echo "Setup complete"
 echo "=============="
 echo "From windows run:"
-echo "wsl --shutdown"
 echo "wsl -s archlinux"
+echo "wsl --shutdown"
 echo "wsl"
 echo
 echo "It is recommended to copy your id_rsa to the .ssh directory and chmod it to 600"
 echo "Then the following in linux:"
 echo "cd ~/repos/scripts"
 echo "./setup.sh"
+
+rm ./setup_arch.sh
+shutdown now
