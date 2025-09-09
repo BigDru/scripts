@@ -12,7 +12,7 @@ fi
 echo "Installing prereqs"
 echo "------------------"
 pacman -Syu --noconfirm
-pacman -S sudo vi git openssh --noconfirm
+pacman -S sudo git --noconfirm
 echo
 echo
 
@@ -63,7 +63,7 @@ echo
 
 echo "wsl.conf"
 echo "--------"
-curl -s https://raw.githubusercontent.com/bigdru/scripts/develop/wsl.conf -o /tmp/wsl.conf
+curl -s https://raw.githubusercontent.com/bigdru/scripts/develop/etc/wsl.conf -o /tmp/wsl.conf
 sed -i "s/\$username/$username/g" /tmp/wsl.conf
 mv /tmp/wsl.conf /etc/wsl.conf
 cat /etc/wsl.conf
